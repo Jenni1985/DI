@@ -1,0 +1,68 @@
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def cv():
+    return 'CV'
+
+@app.route("/CV")
+def Job():
+    html = '''<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+
+</head>
+
+<body>
+
+    <h1>{{ name }}'s CV</h1>
+    {% if pic %}
+    <img src="{{ pic }}" alt="">
+    <h2>Hobbies</h2>
+
+    <ul>
+
+        {% for hobby in hobbs %}
+        <li>{{ hobby }}</li>
+        {% endfor %}
+
+    </ul>
+
+    <h2>Skills</h2>
+
+    <ul>
+        {% for skill in sklls %}
+        <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Strengths</h2>
+
+    <ul>
+
+        {% for strength in strongs %}
+        <li>{{ strength }}</li>
+        {% endfor %}
+
+    </ul>
+
+    <h2>Weaknesses</h2>
+
+    <ul>
+        {% for weakness in weaks %}
+        <li>{{ weakness }}</li>
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+
+</body>
+
+</html>'''
+
+    return html
+
+app.run()
